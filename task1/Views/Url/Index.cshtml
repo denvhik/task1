@@ -1,0 +1,40 @@
+﻿@model IEnumerable<task1.Models.Url>
+
+<h2 class="card-header">List of links</h2>
+
+
+
+<table class="table">
+
+    <div class="mt-2">
+        <a asp-action="create" class="btn btn-outline-dark float-end">
+            Create New URL
+        </a>
+
+    </div>
+    <thead>
+        <tr>
+            <th>Short link</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model is not null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td><a href="@Html.DisplayFor(modelItem => item.URL)"class="text-decoration-none">@Html.DisplayFor(modelItem => item.ShortUrl)</a></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.URL)
+                        <form asp-action="delete" asp-route-id="@item.Id" method="post">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button type="submit" class="btn btn-danger float-end">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+               
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+﻿@model task1.DTO.CreateUrlDto;
+
+
+<h2>Create a new Link</h2>
+
+<form asp-action="create" method="post">
+    <div class="mt-1">
+        <label asp-for="URL" class="control-label"></label>
+    </div>
+    <div class="mt-2">
+        <input asp-for="URL" class="form-control" />
+        <span asp-validation-for="URL" class="text-danger"></span>
+    </div>
+    
+    <div class="mt-2">
+        <input
+            type="submit" 
+            value="Create"
+               class="btn btn-outline-dark float-end"
+               onclick="location.href='@Url.Action("Create", "Url")'"  />
+        <a href="@Url.Action("Index", "Url")" class="btn btn-outline-dark float-lg-end me-2">Go to URL List</a>
+    </div>
+    </div>
+</form>
+
